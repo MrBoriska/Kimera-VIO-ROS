@@ -1,34 +1,6 @@
 <launch>
-  
-
-  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
-    <arg name="infra_fps" value="30"/> <!-- be able increase to 60Hz -->
-    <arg name="color_width" value="1280"/>
-    <arg name="color_height" value="720"/>
-    <arg name="color_fps" value="30"/>
-    <!-- not supported in d415 -->
-    <arg name="enable_gyro" value="false"/>
-    <arg name="enable_accel" value="false"/>
-    <arg name="enable_fisheye" value="false"/>
-    <!-- !!!working with errors and freezes!!! -->
-    <arg name="enable_depth" value="false"/>
-  </include>
-
-  <node pkg="tf" type="static_transform_publisher" name="camera_imu_broadcaster" args="-0.035 -0.015 -0.02 0 0 0.7071068 0.7071068 camera_link imu 100" />
-
-  <!-- POID -->
-  <node pkg="poid_ros_driver" type="poid_node" name="poid_driver" output="screen">
-      <param name="device" value="/dev/ttyUSB0"/>
-      <param name="frame_id" value="imu"/>
-      <param name="calibrate_mag_on_start" value="false"/>
-      <param name="calibrate_acc_gyro_on_start" value="false"/>
-      <rosparam param="angular_velocity_covariance_diagonal" subst_value="True">[0.0004, 0.0004, 0.0004]</rosparam>
-      <rosparam param="linear_acceleration_covariance_diagonal" subst_value="True">[0.0004, 0.0004, 0.0004]</rosparam>
-      <rosparam param="orientation_covariance_diagonal" subst_value="True">[0.01745, 0.01745, 0.15708]</rosparam>
-  </node>
- 
-  <arg name="dataset_name" value="../Kimera-VIO-ROS/cfg/params/RS_POID"/>
-  <arg name="online" default="False" />
+  <arg name="dataset_name" value="../../Kimera-VIO-ROS/cfg/params/RS_POID"/>
+  <arg name="online" default="true" />
 
   <arg name="log_output" default="false"/>
   <arg name="log_output_path"
