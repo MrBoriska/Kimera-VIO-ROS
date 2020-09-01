@@ -16,7 +16,7 @@ maxFeaturesPerFrame: 800
 
 # Good Features To Track specific parameters
 quality_level: 0.001
-min_distance: 8
+min_distance: 1
 block_size: 3
 use_harris_detector: 0
 k: 0.04
@@ -64,4 +64,4 @@ disparityThreshold: 0.5
 # Type of optical flow predictor to aid feature tracking:
 # 0: Static - assumes no optical flow between images (aka static camera).
 # 1: Rotational - use IMU gyro to estimate optical flow.
-optical_flow_predictor_type: 1
+optical_flow_predictor_type: 0
